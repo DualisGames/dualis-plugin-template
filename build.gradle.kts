@@ -1,27 +1,26 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.10"
+    alias(libs.plugins.kotlin) apply(false)
+    `maven-publish`
 }
 
-group = "games.dualis"
-version = "1.0-SNAPSHOT"
+allprojects {
+    group = "games.dualis.${rootProject.name}"
 
-repositories {
-    mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/")
+    repositories {
+        mavenCentral()
+        maven("https://repo.papermc.io/repository/maven-public/")
+    }
 }
 
-dependencies {
-    implementation("io.papermc.paper", "paper-api", "1.19.2-R0.1-SNAPSHOT")
-    implementation("io.insert-koin:koin-core:3.2.0")
-    testImplementation(kotlin("test"))
-}
+subprojects {
+    apply(plugin = "java-library")
+    apply(plugin = "kotlin")
 
-tasks.test {
-    useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    configure<JavaPluginExtension> {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(rootProject.libs.versions.java.get()))
+        }
+    }
 }
