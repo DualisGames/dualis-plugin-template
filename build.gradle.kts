@@ -7,6 +7,7 @@ plugins {
 
 allprojects {
     group = "games.dualis.${rootProject.name}"
+    description = "Create coalition of players to conquer the server."
 
     repositories {
         mavenCentral()

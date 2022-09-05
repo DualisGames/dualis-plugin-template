@@ -1,4 +1,4 @@
-rootProject.name = "faction"
+rootProject.name = "my-plugin"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 

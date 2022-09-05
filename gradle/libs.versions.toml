@@ -2,9 +2,12 @@
 java = "17"
 kotlin = "1.7.10"
 koin = "3.2.0"
+minecraft = "1.19.2"
 paper = "1.19.2-R0.1-SNAPSHOT"
+plugin-yml = "0.5.2"
 
 [plugins]
+yml-bukkit = { id = "net.minecrell.plugin-yml.bukkit", version.ref = "plugin-yml" }
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 
 [libraries]
